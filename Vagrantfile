@@ -54,7 +54,7 @@ Vagrant.configure(2) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder "./mysql", "/var/lib/mysql",
+  config.vm.synced_folder "./mysql-vagrant", "/var/lib/mysql",
     mount_options: [ "dmode=775", "fmode=664" ],
     create: true
 
