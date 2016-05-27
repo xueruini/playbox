@@ -1,0 +1,17 @@
+version: '2'
+services:
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-docker:/var/log/mysql
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+    depends_on:
+      - redis
+  redis:
+    image: redis:3-alpine
+    ports:
+      - 6379:6379
+
