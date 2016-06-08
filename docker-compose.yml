@@ -1,5 +1,11 @@
 version: '2'
 services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-docker:/data/db
   mysql:
     image: mysql
     ports:
@@ -14,4 +20,8 @@ services:
     image: redis:3-alpine
     ports:
       - 6379:6379
-
+  box:
+    build: .
+    command: python box.py
+    volumes:
+      - .:/app
