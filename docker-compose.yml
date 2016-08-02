@@ -1,5 +1,9 @@
 version: '2'
 services:
+  alpine:
+    image: alpine
+    command: ash
+    tty: true
   mongo:
     image: mongo
     ports:
@@ -7,7 +11,7 @@ services:
     volumes:
       - ./mongo-docker:/data/db
   mysql:
-    image: mysql
+    image: mysql:5.7
     ports:
       - 3306:3306
     volumes:
@@ -20,8 +24,14 @@ services:
     image: redis:3-alpine
     ports:
       - 6379:6379
+  python:
+    image: python:2.7-alpine
+    command: python
+    tty: true
   box:
     build: .
-    command: python box.py
+    command: python a.py
+    ports:
+      - 8000:8000
     volumes:
       - .:/app
